@@ -4,8 +4,6 @@ import (
 	"sync"
 )
 
-const defaultMaxElements = 100
-
 type Cache struct {
 	id          int
 	maxElements int
@@ -14,15 +12,11 @@ type Cache struct {
 }
 
 // NewCache returns a new history object
-// with the default number of elements
-func NewCache() *Cache {
+// with maxElements elements.
+func NewCache(maxElements int) *Cache {
 	return &Cache{
-		maxElements: defaultMaxElements,
+		maxElements: maxElements,
 	}
-}
-
-func (h *Cache) SetMaxElements(i int) {
-	h.maxElements = i
 }
 
 func (h *Cache) Add(newElement interface{}) {

@@ -5,7 +5,7 @@ import (
 )
 
 func BenchmarkAddImport(b *testing.B) {
-	testCache := NewCache()
+	testCache := NewCache(100)
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
 		for j := 0; j < 1000; j++ {
@@ -15,8 +15,7 @@ func BenchmarkAddImport(b *testing.B) {
 }
 
 func TestMaxElements(t *testing.T) {
-	testCache := NewCache()
-	testCache.SetMaxElements(10)
+	testCache := NewCache(10)
 
 	for i := 0; i < 5; i++ {
 		t.Logf("adding element %d", i)
@@ -29,8 +28,7 @@ func TestMaxElements(t *testing.T) {
 }
 
 func TestCapTo5(t *testing.T) {
-	testCache := NewCache()
-	testCache.SetMaxElements(5)
+	testCache := NewCache(5)
 
 	for i := 0; i < 10; i++ {
 		t.Logf("adding element %d", i)

@@ -18,8 +18,9 @@ type download struct {
 }
 
 func main() {
-	// create a cache instance
-	h := tinycache.NewCache()
+	// create a cache instance with
+	// a max of 10 elements
+	h := tinycache.NewCache(10)
 
 	// set max number of elements to keep
 	h.SetMaxElements(10)
@@ -34,6 +35,10 @@ func main() {
 	}
 
 	// now only the last 10 are kept
+	// since we store interfaces, you
+	// should cast them elements back
+	// to the original struct
+	
 	for _, d := range h.GetElements() {
 		fmt.Printf("uid: %s, timestamp: %s\n", d.(download).uid, d.(download).timestamp)
 	}
