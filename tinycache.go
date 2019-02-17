@@ -35,6 +35,16 @@ func (h *Cache) GetElements() []interface{} {
 	return h.elements
 }
 
+func (h *Cache) GetElementsReversed() []interface{} {
+	var reversed []interface{}
+
+	for i := len(h.elements) - 1; i >= 0; i-- {
+		reversed = append(reversed, h.elements[i])
+	}
+
+	return reversed
+}
+
 func (h *Cache) Count() int {
 	return len(h.elements)
 }
